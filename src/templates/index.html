@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Event Explorer</title>
+	</head>
+
+	<body>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script src="https://www.google.com/jsapi"></script>
+        
+    	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	    
+        <style>
+            .map{
+              height: 500px;
+              margin: 0px;
+              padding: 0px
+            }
+	        .axis path,
+			.axis line {
+			  fill: none;
+			  stroke: #000;
+			  shape-rendering: crispEdges;
+			}
+			
+			.bar {
+			  fill: orange;
+			}
+			
+			.bar:hover {
+			  fill: orangered ;
+			}
+			
+			.x.axis path {
+			  display: none;
+			}
+			
+			.d3-tip {
+			  line-height: 1;
+			  font-weight: bold;
+			  padding: 12px;
+			  background: rgba(0, 0, 0, 0.8);
+			  color: #fff;
+			  border-radius: 2px;
+			}
+			
+			/* Creates a small triangle extender for the tooltip */
+			.d3-tip:after {
+			  box-sizing: border-box;
+			  display: inline;
+			  font-size: 10px;
+			  width: 100%;
+			  line-height: 1;
+			  color: rgba(0, 0, 0, 0.8);
+			  content: "\25BC";
+			  position: absolute;
+			  text-align: center;
+			}
+			
+			/* Style northward tooltips differently */
+			.d3-tip.n:after {
+			  margin: -1px 0 0 0;
+			  top: 100%;
+			  left: 0;
+			}
+        </style>
+		<div class="container">
+			<div class='row'>
+				<div class='col-lg-12'>
+					<h1>Welcome to the Event Explorer</h1>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-12'>
+					<p><div id="loginStatus">Please log in with your Facebook account <fb:login-button scope="public_profile,user_events" onlogin="checkLoginState();">
+						</fb:login-button></div></p>
+					<form role='form' class='form-inline'>
+						<div class='form-group'>
+							<input type='text' class='form-control' id='location' placeholder='e.g. Amsterdam, NL' value="Amsterdam">
+							<input type="date" class='form-control' id="start" min="{{ startmin }}" value="{{ startmin }}">
+							<input type="date" class='form-control' id="end" min="{{ startmin }}" value="{{ enddefault }}">
+						</div>
+						<a id="loginAndSearchEvent" class='btn btn-primary'>search</a>
+					</form>
+					<h3>Results</h3>
+					<div id="searchResults" class="map"></div>
+				</div>
+			</div>
+        </div>
+		
+        <script src='{{ url_for("static", filename="js/jquery-1.11.0.min.js") }}' type='text/javascript'></script>
+        <script src='{{ url_for("static", filename="js/jquery.blockUI.js") }}' type='text/javascript'></script>
+		<script src='{{ url_for("static", filename="js/explorer.js") }}' type='text/javascript'></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		
+	</body>
+</head>
+
+
